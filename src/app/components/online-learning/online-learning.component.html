@@ -1,0 +1,57 @@
+<div class="w-full bg-gray-500 flex flex-col items-center justify-center text-white">
+    <span class="text-2xl font-bold">All Videos</span>
+    <div class="flex w-full">
+        <div class="flex w-1/2 p-5 gap-10 flex-wrap">
+            
+            @for (video of videoList; track $index) {
+                <div class="w-1/4 h-auto bg-white text-black text-center flex flex-col flex-wrap">
+                    {{video.videoId}}
+                    <hr class="border border-black">
+                    {{video.videoTitle}}
+                    <br>
+                    {{video.videoDescription}}
+                    <br>
+                    <button (click)="onEditClick(video)" class="p-1 m-2 bg-green-500">
+                        Edit
+                    </button>
+                    <button (click)="onDeleteClick(video.videoId)" class="p-1 m-2 bg-red-500">
+                        Delete
+                    </button>
+                </div>            
+            }            
+            
+        </div>
+        <div class="flex w-1/2 p-5 gap-10 flex-wrap items-start justify-center">
+            <div class="w-full bg-green-500 text-black text-center">
+                @if(videoSaveObject.videoId == 0){
+                    <span class="font-bold">Add Video Form</span>
+                } @else {
+                    <span class="font-bold">Add Video Form</span>
+                }
+                <hr class="border border-black">
+                <div class="flex flex-col">
+                    <label for="videoUrl">URL</label>
+                    <input class="p-3 m-2 border border-black" [(ngModel)]="videoSaveObject.videoUrl" type="text" id="videoUrl">
+                    <label for="videoTitle">Title</label>
+                    <input class="p-3 m-2 border border-black" [(ngModel)]="videoSaveObject.videoTitle" type="text" id="videoTitle">
+                    <label for="videoDescription">Description</label>
+                    <input class="p-3 m-2 border border-black" [(ngModel)]="videoSaveObject.videoDescription" type="text" id="videoDescription">
+                    <label for="videoThumbnail">Video Thumbnail</label>
+                    <input class="p-3 m-2 border border-black" [(ngModel)]="videoSaveObject.videoThumbnail" type="text" id="videoThumbnail">
+                    <label for="totalDuration">Total Duration</label>
+                    <input class="p-3 m-2 border border-black" [(ngModel)]="videoSaveObject.totalDuration" type="text" id="totalDuration">
+
+                    <div>
+                        @if(videoSaveObject.videoId == 0){
+                            <button class="bg-blue-500 w-1/4 m-2 rounded-lg text-white" (click)="saveForm()">Save</button>
+                        } @else {
+                            <button class="bg-blue-500 w-1/4 m-2 rounded-lg text-white" (click)="updateForm(videoSaveObject.videoId)">Update</button>
+                        }
+                        <button class="bg-gray-500 w-1/4 m-2 rounded-lg text-white">Reset</button>
+                    </div>
+                </div>
+            </div>            
+        </div>
+
+    </div>
+</div>

@@ -1,0 +1,55 @@
+<div class="w-full bg-gray-500 text-black">
+    <h1 class="text-3xl font-bold">Data Binding Example</h1>
+
+    <div class="bg-red-500 text-xl">
+        <h1>One Way Binding: From .ts to .html</h1>
+    </div>
+    <div class="flex justify-around items-center bg-yellow-500 w-full">
+        <div class="w-1/2 text-center">
+            <h1 class="text-xl">Interpolation</h1>
+            <!-- We can use the variables created in the .ts file like this. -->
+            {{courseName}}
+        </div>
+        <div class="w-1/2 text-center">
+            <h1 class="text-xl">Property Binding</h1>
+            <!-- When we assign those variables to the property of any element, it is called property binding. -->
+            <input class="border-black border-2 m-2 p-2" type="text" [value]="courseName" [minLength]="inputLength">
+            <!-- You can even make the type dynamic -->
+             <input [type]="myInputType" name="" id="">
+        </div>
+    </div> 
+    <div class="bg-red-500 text-xl">
+        <h1>One Way Binding: From .html to .ts</h1>
+    </div>
+    <div class="flex justify-around items-center bg-yellow-500 w-full">
+        <div class="w-full text-center">
+            <h1 class="text-xl">Event Binding</h1>
+            <button class="bg-blue-500 rounded-xl p-3" (click)="showMessage()">Show Message</button>
+        </div>
+        <div class="w-full text-center">
+            <select (change)="showSelection($event)">
+                <option value="rajasthan">Rajasthan</option>
+                <option value="tamilnadu">Tamil Nadu</option>
+                <option value="kerela">Kerela</option>
+            </select>
+        </div>
+        <div class="w-full text-center">
+            <button class="bg-blue-500 rounded-xl p-3 m-2" (click)="showFramework('React')">
+                React
+            </button>
+            <button class="bg-red-500 rounded-xl p-3 m-2" (click)="showFramework('Angular')">
+                Angular
+            </button>
+            <button class="bg-green-500 rounded-xl p-3 m-2" (click)="showFramework('Vue')">
+                Vue
+            </button>
+        </div>
+    </div> 
+    <div class="bg-red-500 text-xl">
+        <h1>Two Way Binding: ngModel</h1>
+    </div>
+    <div class="flex justify-around items-center bg-yellow-500 w-full">
+        <input class="border-black border-2 m-2 p-2" type="text" [(ngModel)]="courseName" [minLength]="inputLength">
+    </div> 
+</div>
+

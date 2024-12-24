@@ -1,0 +1,52 @@
+<div class="bg-gray-500 p-4">
+    <button (click)="getUsers()" class="bg-blue-500 rounded p-2 m-2">Load Data</button>
+    <table class="border border-black">
+        <tr class="border border-black">
+            <th class="border border-black">Id</th>
+            <th class="border border-black">Name</th>
+            <th class="border border-black">Username</th>
+        </tr>
+        @if (userList.length != 0) {
+            @for (user of userList; track $index) {
+                <tr>
+                    <td class="border border-black">{{user.id}}</td>
+                    <td class="border border-black">{{user.name}}</td>
+                    <td class="border border-black">{{user.username}}</td>
+                </tr>
+            }
+        } @else {
+            <tr>
+                <td colspan="3" class="border border-black">No Data Available</td>
+            </tr>
+        }
+    </table>
+</div>
+
+<div class="bg-gray-500 p-4">
+    <button (click)="getEmployees()" class="bg-blue-500 rounded p-2 m-2">Load Employee Data</button>
+    <table class="border border-black">
+        <tr class="border border-black">
+            <th class="border border-black">Id</th>
+            <th class="border border-black">Name</th>
+            <th class="border border-black">Contact Number</th>
+            <th class="border border-black">Email ID</th>
+            <th class="border border-black">Gender</th>
+        </tr>
+        @if (employeeList.length != 0) {
+            @for (employee of employeeList; track $index) {
+                <tr>
+                    <td class="border border-black">{{employee.employeeId}}</td>
+                    <td class="border border-black">{{employee.employeeName}}</td>
+                    <td class="border border-black">{{employee.contactNo}}</td>
+                    <td class="border border-black">{{employee.emailId}}</td>
+                    <td class="border border-black">{{employee.gender}}</td>
+                </tr>
+            }
+        } @else {
+            <tr>
+                <td colspan="5" class="border border-black">No Data Available</td>
+            </tr>
+        }
+    </table>
+</div>
+

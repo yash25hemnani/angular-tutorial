@@ -1,0 +1,106 @@
+<div class="bg-gray-500 p-4 flex gap-10">
+    @if(isDivVisible == true){
+        <div class="bg-red-500">
+            This is the div that should be visible.
+        </div>
+    }
+
+    <!-- Buttons to toggle -->
+     <button (click)="showDiv(true)" class="bg-blue-500 rounded m-2 p-2">Show</button>
+     <button (click)="showDiv(false)" class="bg-blue-500 rounded m-2 p-2">Hide</button>
+</div>
+<div class="bg-gray-500 p-4 flex gap-10">
+    @if(div2Visible == "Yes"){
+        <div class="bg-red-500">
+            This div is visible.
+        </div>
+    } @else {
+        <div class="bg-red-500">
+            Div Hidden
+        </div>
+    }
+    <!-- Buttons to toggle -->
+     <button (click)="showDiv2('Yes')" class="bg-blue-500 rounded m-2 p-2">Show</button>
+     <button (click)="showDiv2('No')" class="bg-blue-500 rounded m-2 p-2">Hide</button>
+</div>
+<div class="bg-gray-500 p-4 flex gap-10">
+    @if(div3Visible == "yes"){
+        <div class="bg-red-500">
+            This div is visible.
+        </div>
+    } @else {
+        <div class="bg-red-500">
+            Div Hidden
+        </div>
+    }
+    <!-- Input  -->
+     <input type="text" [(ngModel)]="div3Visible">
+</div>
+<div class="bg-gray-500 p-4 flex gap-10">
+    @switch (dayOfTheWeek) {
+        @case ('mon') {
+            Monday
+        }
+        @case ('tue') {
+            Tuesday
+        }
+        @case ('wed') {
+            Wednesday
+        }
+        @case ('thu') {
+            Thursday
+        }
+        @case ('fir') {
+            Friday
+        }
+        @case ('sat') {
+            Saturday
+        }
+        @case ('sun') {
+            Sunday
+        }
+    }
+    <!-- Input  -->
+     <input type="text" [(ngModel)]="dayOfTheWeek">
+</div>
+
+<div class="bg-gray-500 p-4 flex gap-10">
+    <ul>
+        @for (city of cityName; track $index) {
+            <li>
+                {{$index}} : {{city}}
+                <input type="text" [value]="city">
+            </li>
+        }
+    </ul>
+</div>
+
+<div class="bg-gray-500 p-4 flex gap-10">
+    <table>
+        <tr>
+            <th>SNo</th>
+            <th>Name</th>
+            <th>Mobile</th>
+            <th>Active Status</th>
+        </tr>
+        @for (details of studentDetails; track $index) {
+            <tr>
+                <td>{{$index + 1}}</td>
+                <td>{{details.name}}</td>
+                <td>{{details.mobile}}</td>
+                <td class="{{ details.isActive?'bg-green-500':'bg-red-500' }}">
+                    @if (details.isActive){
+                        <span>Student is Active</span>
+                    } @else {
+                        <span>Student is not Active</span>
+                    }
+                </td>
+            </tr>
+        }
+        
+    </table>
+</div>
+
+
+
+
